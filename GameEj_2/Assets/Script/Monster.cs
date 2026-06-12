@@ -70,7 +70,14 @@ public class Monster : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("���� ���!");
+        Debug.Log("몬스터가 소멸했습니다.");
+
+        // [추가] 몬스터가 죽을 때 점수 100점 추가 (원하는 점수로 변경 가능)
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddScore(100);
+        }
+
         Destroy(gameObject);
     }
 }

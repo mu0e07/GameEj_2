@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5508b19b202f3d4d9ad02a13d5ecf91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monster
-  moveSpeed: 1
-  maxHealth: 10
+  moveSpeed: 0.5
+  maxHealth: 3
   damageToPlayer: 1
   attackCooldown: 1
 --- !u!212 &2337220666470593977
@@ -170,7 +170,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 75472345
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5119971492981962814, guid: 2c383d5f9adff8546a3f032d9b7b2e68, type: 3}

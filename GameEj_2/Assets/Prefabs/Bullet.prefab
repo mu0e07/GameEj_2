@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4408742979757000543}
   - component: {fileID: 7109610630595509199}
   - component: {fileID: 8797034586860563323}
+  - component: {fileID: 2181115616341945031}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -156,3 +157,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2181115616341945031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3003863774101599518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9109876826075d945803846c64641821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  speed: 8
+  damage: 1
+  lifetime: 3
