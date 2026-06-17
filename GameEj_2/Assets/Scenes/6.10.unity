@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   bulletPrefab: {fileID: 3003863774101599518, guid: dc17ac99b90e50540909ece3938ea68f, type: 3}
-  attackCooldown: 1.5
+  attackCooldown: 0.01
   scanRange: 1
 --- !u!1 &431739333
 GameObject:
@@ -44819,7 +44819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonsterSpawner
   monsterPrefab: {fileID: 8315960262166510149, guid: 280ea5bf97d12ed4b8f36e1f3bc3d119, type: 3}
-  spawnInterval: 1
+  spawnInterval: 0.1
   minSpawnDistance: 3
   maxSpawnDistance: 5
   minX: -3.361
