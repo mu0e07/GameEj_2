@@ -89,4 +89,13 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    public void SetCharacterSprites(Sprite[] up, Sprite[] down, Sprite[] left, Sprite[] right)
+    {
+        spriteUp = up;
+        spriteDown = down;
+        spriteLeft = left;
+        spriteRight = right;
+
+        ChangeSprites(spriteDown);
+    }
 }
