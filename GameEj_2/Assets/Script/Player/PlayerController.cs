@@ -17,11 +17,14 @@ public class PlayerController : MonoBehaviour
     private Sprite[] currentSprites;
     private int frameIndex = 0;
     private float timer = 0f;
+    private PlayerStats stats;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        stats = GetComponent<PlayerStats>();
 
         currentSprites = spriteDown;
         sr.sprite = currentSprites[0];
@@ -69,7 +72,7 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputValue value)
     {
         input = value.Get<Vector2>();
-        velocity = input.normalized * moveSpeed;
+        velocity = input.normalized * stats.moveSpeed;
 
         if (input.sqrMagnitude > 0.01f)
         {
@@ -96,6 +99,13 @@ public class PlayerController : MonoBehaviour
         spriteLeft = left;
         spriteRight = right;
 
-        ChangeSprites(spriteDown);
+        currentSprites = spriteDown;
+        frameIndex = 0;
+        timer = 0f;
+
+        if (currentSprites != null && currentSprites.Length > 0)
+        {
+            sr.sprite = currentSprites[0];
+        }
     }
 }

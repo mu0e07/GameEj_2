@@ -16,17 +16,23 @@ public class Monster : MonoBehaviour
 
     private Transform playerTransform;
     private Rigidbody2D rb;
+    [SerializeField] private GameObject experiencePrefab;
+
+    public MonsterData monsterData;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
+        currentHealth = monsterData.maxHP;
+        moveSpeed = monsterData.moveSpeed;
+        damageToPlayer = monsterData.attack;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             playerTransform = player.transform;
         }
+        GetComponent<SpriteRenderer>().sprite = monsterData.sprite;
     }
 
     private void FixedUpdate()
@@ -59,8 +65,11 @@ public class Monster : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Debug.Log("받은 데미지 : " + damage);
+
         currentHealth -= damage;
-        Debug.Log($"���� �ǰ�! ���� ü��: {currentHealth}");
+
+        Debug.Log("남은 체력 : " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -70,12 +79,17 @@ public class Monster : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("몬스터가 소멸했습니다.");
+        Debug.Log("몬스터 사망");
 
-        // [추가] 몬스터가 죽을 때 점수 100점 추가 (원하는 점수로 변경 가능)
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.AddScore(100);
+            GameManager.Instance.AddScore(monsterData.score);
+        }
+
+        PlayerExperience exp = FindFirstObjectByType<PlayerExperience>();
+        if (exp != null)
+        {
+            exp.AddExperience(monsterData.exp);
         }
 
         Destroy(gameObject);

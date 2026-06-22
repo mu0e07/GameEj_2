@@ -3,14 +3,15 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 8f;
-    [SerializeField] private int damage = 1;
+    private int damage; 
     [SerializeField] private float lifetime = 3f;
 
     private Vector2 moveDirection;
 
-    public void SetDirection(Vector2 direction)
+    public void SetDirection(Vector2 direction, int attackDamage)
     {
         moveDirection = direction.normalized;
+        damage = attackDamage;
     }
 
     void Start()

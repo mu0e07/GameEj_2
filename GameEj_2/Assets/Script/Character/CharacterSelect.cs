@@ -5,7 +5,7 @@ public class CharacterSelect : MonoBehaviour
 {
     public void SelectCharacter(int index)
     {
-        CharacterData.SelectedCharacter = index;
+        CharacterSelection.SelectedCharacter = index;
 
         SceneManager.LoadScene("GameScene");
     }

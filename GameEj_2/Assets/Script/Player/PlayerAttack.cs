@@ -3,14 +3,14 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float attackCooldown = 1.5f;
     [SerializeField] private float scanRange = 10f;
 
     private float lastAttackTime;
+    private PlayerStats stats;
 
     void Update()
     {
-        if (Time.time >= lastAttackTime + attackCooldown)
+        if (Time.time >= lastAttackTime + stats.attackSpeed)
         {
             Transform targetMonster = FindClosestMonster();
 
@@ -48,7 +48,13 @@ public class PlayerAttack : MonoBehaviour
         if (bullet != null)
         {
             Vector2 dir = (target.position - transform.position).normalized;
-            bullet.SetDirection(dir);
+
+            // 방향 + 공격력 전달
+            bullet.SetDirection(dir, stats.attack);
         }
+    }
+    void Start()
+    {
+        stats = GetComponent<PlayerStats>();
     }
 }
