@@ -12,5 +12,5 @@ public class CharacterData : ScriptableObject
     public float moveSpeed;
     public float attackSpeed;
     public float criticalChance;
-
+    public GameObject bulletPrefab;
 }

@@ -2,7 +2,16 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab;
+    private GameObject currentBulletPrefab;
+    [Header("캐릭터별 무기")]
+    [SerializeField] private GameObject redKnife;
+    [SerializeField] private GameObject yellowKnife;
+    [SerializeField] private GameObject blueKnife;
+
+    [SerializeField] private GameObject greenFireball;
+    [SerializeField] private GameObject blackFireball;
+    [SerializeField] private GameObject whiteFireball;
+
     [SerializeField] private float scanRange = 10f;
 
     private float lastAttackTime;
@@ -42,7 +51,10 @@ public class PlayerAttack : MonoBehaviour
 
     void FireBullet(Transform target)
     {
-        GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        GameObject bulletObj =
+    Instantiate(currentBulletPrefab,
+                transform.position,
+                Quaternion.identity);
         Bullet bullet = bulletObj.GetComponent<Bullet>();
 
         if (bullet != null)
@@ -56,5 +68,40 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         stats = GetComponent<PlayerStats>();
+
+        int character = CharacterSelection.SelectedCharacter;
+
+        switch (character)
+        {
+            case 0:
+                currentBulletPrefab = redKnife;
+                break;
+
+            case 1:
+                currentBulletPrefab = yellowKnife;
+                break;
+
+            case 2:
+                currentBulletPrefab = blueKnife;
+                break;
+
+            case 3:
+                currentBulletPrefab = greenFireball;
+                break;
+
+            case 4:
+                currentBulletPrefab = blackFireball;
+                break;
+
+            case 5:
+                currentBulletPrefab = whiteFireball;
+                break;
+
+            default:
+                currentBulletPrefab = redKnife;
+                break;
+                Debug.Log("선택 캐릭터 번호 : " + CharacterSelection.SelectedCharacter);
+                Debug.Log("현재 무기 : " + currentBulletPrefab);
+        }
     }
 }

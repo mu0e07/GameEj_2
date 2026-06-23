@@ -31,7 +31,16 @@ public class PlayerHealth : MonoBehaviour
 
         void Die()
         {
-            Debug.Log("플레이어가 사망했습니다!");
+            RankManager.SaveScore(
+                GameManager.Instance.GetScore()
+            );
+
+            Destroy(gameObject);
+            FindAnyObjectByType<GameOverUI>()
+     .ShowGameOver(
+         GameManager.Instance.GetScore()
+     );
+
             gameObject.SetActive(false);
         }
     }
